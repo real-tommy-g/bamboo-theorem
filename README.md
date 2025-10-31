@@ -2,7 +2,7 @@
 
 # - Bamboo Theorem – Full-Stack AI Developer Portfolio
 
-**Live RAG API:** https://rag-api-116522765677-us-central1.run.app  
+**Live RAG API:** https://rag-api-116522765677.us-central1.run.app  
 **Frontend Demo:** [GitHub Pages – Day 7]  
 
 ## Project Overview
