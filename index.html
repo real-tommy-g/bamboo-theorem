@@ -3,119 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ask My AI Prompt Engineer</title>
+  <title>Ask My AI</title>
   <style>
+    :root {
+      --bg: linear-gradient(135deg, #1e3c72, #2a5298);
+      --card: rgba(255, 255, 255, 0.1);
+      --text: white;
+      --accent: #00d4ff;
+    }
+    [data-theme="dark"] {
+      --bg: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      --card: rgba(255, 255, 255, 0.05);
+      --text: #e0e0e0;
+      --accent: #00ff88;
+    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       text-align: center;
       margin: 0;
-      padding: 40px;
+      padding: 20px;
       min-height: 100vh;
+      transition: all 0.5s;
     }
     .container {
       max-width: 600px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.1);
+      margin: 40px auto;
+      background: var(--card);
       padding: 30px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border-radius: 25px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease;
     }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      font-size: 2.8em;
+      margin: 0 0 10px;
+      background: linear-gradient(45deg, #00d4ff, #00ff88);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+    input, button {
+      padding: 15px;
+      margin: 10px;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
     }
     input {
       width: 70%;
-      padding: 15px;
-      font-size: 18px;
-      border: none;
-      border-radius: 50px;
-      margin: 15px 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-    button {
-      padding: 15px 30px;
-      font-size: 18px;
-      background: #ff6b6b;
+      background: rgba(255,255,255,0.2);
       color: white;
-      border: none;
-      border-radius: 50px;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
+    }
+    input::placeholder { color: rgba(255,255,255,0.7); }
+    button {
+      background: var(--accent);
+      color: white;
       cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+      transition: 0.3s;
     }
-    button:hover {
-      background: #ff5252;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 82, 82, 0.5);
-    }
+    button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
     #answer {
-      margin-top: 30px;
-      font-size: 1.3em;
-      line-height: 1.6;
-      background: rgba(255, 255, 255, 0.15);
+      margin-top: 25px;
       padding: 20px;
+      background: rgba(0,0,0,0.2);
       border-radius: 15px;
-      min-height: 60px;
+      min-height: 80px;
+      font-size: 1.2em;
+      line-height: 1.7;
+      animation: fadeIn 0.5s;
     }
-    .loading {
-      color: #ffd93d;
-      font-style: italic;
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="theme-toggle" onclick="toggleTheme()">Moon</div>
   <div class="container">
-    <h1>Ask My AI Prompt Engineer</h1>
-    <input type="text" id="question" placeholder="What are the main tasks of an AI Prompt Engineer?" />
+    <div class="logo">Robot</div>
+    <h1>Ask My AI</h1>
+    <p>Ask anything about the AI Prompt Engineer role!</p>
+    <input type="text" id="question" placeholder="What are the main tasks?" />
     <button onclick="askAI()">Ask!</button>
     <div id="answer">Your answer will appear here...</div>
   </div>
 
   <script>
-    // TVOJA CLOUD RUN URL – ZAPAMÄTANÁ!
     const API_URL = "https://rag-api-116522765677.us-central1.run.app";
+
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute('data-theme');
+      body.setAttribute('data-theme', current === 'dark' ? '' : 'dark');
+      localStorage.setItem('theme', current === 'dark' ? 'light' : 'dark');
+    }
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.setAttribute('data-theme', 'dark');
+    }
 
     async function askAI() {
       const question = document.getElementById("question").value.trim();
       const answerDiv = document.getElementById("answer");
+      if (!question) return;
 
-      if (!question) {
-        answerDiv.innerHTML = "<span style='color:#ff6b6b'>Please enter a question!</span>";
-        return;
-      }
-
-      answerDiv.innerHTML = "<span class='loading'>Thinking... please wait</span>";
-
+      answerDiv.innerHTML = "Thinking...";
       try {
-        const response = await fetch(API_URL, {
+        const res = await fetch(API_URL, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question })
         });
-
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-
-        const data = await response.json();
+        const data = await res.json();
         answerDiv.innerHTML = data.answer.replace(/\n/g, '<br>');
-      } catch (error) {
-        console.error("Error:", error);
-        answerDiv.innerHTML = `<span style='color:#ff6b6b'>Error: ${error.message}<br>Check console (F12)</span>`;
+      } catch (e) {
+        answerDiv.innerHTML = `Error: ${e.message}`;
       }
     }
-
-    // Test pri načítaní
-    window.onload = () => {
-      console.log("AI API URL:", API_URL);
-    };
   </script>
 </body>
 </html>
