@@ -1,4 +1,3 @@
+Flask==2.3.3
 google-cloud-aiplatform>=1.38
 PyPDF2
-functions-framework
-flask
