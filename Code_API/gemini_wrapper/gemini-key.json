@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "bamboo-theorem-2000",
+  "private_key_id": "6382bce4f31f691b24ff753d388bc98f1b877181",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCoyEMIiNRVeSET\nZJaCN1xb2D6PW22YtyXVuPqZPjTe6nMSK+Kz1SzQ24TZDAYqu6BFs6osfQIA2IVP\nrQqX8RfISkHKpaCHeSui8yHrJDnm9Ii0UhybKXFxu9K9GrCAPopHfdcuHd5zoaoh\nPHHYlpZ3hEEJOx+QlUKVovzM4RbKbtT6niVljyZPDY/+O+ZFjJIL0Q58jVMFNysh\nayA8his5Jwmpa6VgFiDs9BbdzXAcsKZmN0Lct+5Cf+WoaLTHFoQhYjivL87tU/0T\nmu5l9lDuCa6/bTGpsGwDyOQobFReRtHXGaUOgfky2XA4qTVvG5Tiy9DnOQCIXRnh\nzPfyiDWTAgMBAAECggEAUiWOAqRd++/FemPVoTECoa0A3dMY52AUaQ3r4hPVtb0U\nHn7/ipkxg8GjyePBSKEjI2mLZLW++NxpHdtRsZvlAFWr6c5s8CK4a0m8c26hQ9g2\nhNUGGTq1fS52JhXMW86UjLEhvs9IyqyfWifKHSlFuIvE/5IoDb2nt56pPao75m/4\n+w7eUhl1JgAH6uhSbZqCu3gNJfQNT++71NK+XxVwVrzm0IZJ/SFfww183YBD8mqC\n/RMqTO/YwqVCzOD8aUPXc6ZhAjJhcfDr2wiCZuncUb7zTS2mEN+fUtTSjpB+E+6e\n4BC9ogjEv/3NzC3YoI9DosEYkeAvhTqEvEX4Gwds2QKBgQDsFzNvfL1H5+Dp0pRB\nxRgArYzm1thOLcHpr9suNkFV85a99JNJ3enfhv6PIs53gQO0a/Qj+RekjTMqm2OP\nBpjpNOupma8kNeR3GkCLXU4vMjVAFoJv8OflKk40k7rAnGW9XA8Fc7k7H1gHnAUh\nwH6UIb1ClLzmmwCoymbYZ7JAZQKBgQC3A/ykKiLEZUlySsLU14tNZcnFosKQe7LE\nehbRZp7bADHHcf9FRghK5b6R6ETGtsyYioBQi08FUO2xdXhS6UivYreUNTey6Ijl\nBjtKkVOaEXSMGPleq7pPuXaIjFB1ne8WLTXF01CdEV/MUzD87PNoUb+s6rqQKyCq\nZ9H0jEaylwKBgAEbHreP+wcCNBCEVwNz2+fs6DMQoJTFLBpfI4S05ltzt6oOIj5/\nVqAgbsLW4+a1aQIIW21rtkukCbBSaAX8fuzgvZXezW46/mX8bn74oewgrRUuxc+m\nbj+pkhI2+vH6CZP4gW2CHEUFoZDvjyqYTz98ZPmR3sypvzgLMq4i1jftAoGAMvpi\nUhwGiSwpdDOM55qOi+WReYKnrXU3S3Eyj+uEzj3Un9iKIXKrdqleFuha1/stLERQ\nD59uSG3Nd8Pf20Bt5aSavCbCuAv7rce5lkC6x8ya6Tc/pvYwtGpVsR1cgBaY9VVs\niAkfiFDBnXmCyMD74A/9Ux4jD2tj8vNuUS8NtksCgYEAvzCc+L5Nutf/Y8W010Tv\n5foNaUbSuHzqLQGFuNC/XuHTOsnhzVuID9cvqKfix00AbNpneH1t9DfAPxRFb7ev\nUvYfADJth4nnpyCFtymVgocEyRNZlowbQGORK/FR6AGb2oXMyK3kZub2Kn+83yMb\nEy0hggE+5M3HdUZPmkQ0Ikw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "gemini-api-user@bamboo-theorem-2000.iam.gserviceaccount.com",
+  "client_id": "115977708602385832649",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gemini-api-user%40bamboo-theorem-2000.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

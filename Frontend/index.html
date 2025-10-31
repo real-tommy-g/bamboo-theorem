@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ask My AI</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    input, button { padding: 10px; margin: 10px; font-size: 16px; }
+    #answer { margin-top: 20px; font-weight: bold; color: blue; }
+  </style>
+</head>
+<body>
+  <h1>Ask My AI Prompt Engineer!</h1>
+  <input type="text" id="question" placeholder="What does a Prompt Engineer do?" />
+  <button onclick="askAI()">Ask!</button>
+  <div id="answer">Answer will appear here...</div>
+
+  <script>
+    async function askAI() {
+      const question = document.getElementById("question").value;
+      const answerDiv = document.getElementById("answer");
+      answerDiv.textContent = "Thinking...";
+
+      // ← ZMEŇ NA SVOJU URL!
+      const url = "https://rag-api-116522765677-us-central1.run.app";
+
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question })
+        });
+        const data = await response.json();
+        answerDiv.textContent = data.answer;
+      } catch (error) {
+        answerDiv.textContent = "Error: " + error.message;
+      }
+    }
+  </script>
+</body>
+</html>
