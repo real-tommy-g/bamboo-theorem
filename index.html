@@ -6,17 +6,22 @@
   <title>Ask My AI</title>
   <style>
     :root {
-      --bg: linear-gradient(135deg, #1e3c72, #2a5298);
-      --card: rgba(255, 255, 255, 0.1);
-      --text: white;
-      --accent: #00d4ff;
+      /* LIGHT MODE – príjemná biela */
+      --bg: #f8f9fa;
+      --card: #ffffff;
+      --text: #2c3e50;
+      --accent: #3498db;
+      --shadow: rgba(0, 0, 0, 0.08);
     }
     [data-theme="dark"] {
-      --bg: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      --card: rgba(255, 255, 255, 0.05);
+      /* DARK MODE – hlboká tmavá */
+      --bg: #121212;
+      --card: #1e1e1e;
       --text: #e0e0e0;
-      --accent: #00ff88;
+      --accent: #00d4ff;
+      --shadow: rgba(0, 0, 0, 0.3);
     }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg);
@@ -25,126 +30,220 @@
       margin: 0;
       padding: 20px;
       min-height: 100vh;
-      transition: all 0.5s;
+      transition: all 0.4s ease;
     }
+
     .container {
       max-width: 600px;
       margin: 40px auto;
       background: var(--card);
-      padding: 30px;
-      border-radius: 25px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-      animation: fadeIn 1s ease;
+      padding: 35px;
+      border-radius: 24px;
+      box-shadow: 0 12px 30px var(--shadow);
+      animation: fadeIn 0.8s ease-out;
+      backdrop-filter: blur(10px);
     }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     h1 {
       font-size: 2.8em;
-      margin: 0 0 10px;
-      background: linear-gradient(45deg, #00d4ff, #00ff88);
+      margin: 0 0 8px;
+      background: linear-gradient(45deg, #3498db, #00d4ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      font-weight: 600;
     }
+
     .logo {
       width: 80px;
       height: 80px;
-      margin: 0 auto 20px;
+      margin: 0 auto 18px;
       background: var(--accent);
+      color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 40px;
+      font-size: 38px;
       animation: pulse 2s infinite;
+      box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
     }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-    input, button {
-      padding: 15px;
-      margin: 10px;
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    p.subtitle {
+      font-size: 1.1em;
+      margin: 0 0 25px;
+      opacity: 0.85;
+    }
+
+    input {
+      width: 68%;
+      padding: 16px 20px;
+      margin: 12px 8px;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      font-size: 18px;
+      background: #fff;
+      color: #2c3e50;
+      transition: all 0.3s;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+
+    input::placeholder {
+      color: #95a5a6;
+    }
+
+    button {
+      padding: 16px 32px;
+      margin: 12px 8px;
+      background: var(--accent);
+      color: white;
       border: none;
       border-radius: 50px;
       font-size: 18px;
-    }
-    input {
-      width: 70%;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
-    }
-    input::placeholder { color: rgba(255,255,255,0.7); }
-    button {
-      background: var(--accent);
-      color: white;
+      font-weight: 600;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
     }
-    button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+    }
+
+    button:active {
+      transform: translateY(-1px);
+    }
+
     #answer {
-      margin-top: 25px;
-      padding: 20px;
-      background: rgba(0,0,0,0.2);
-      border-radius: 15px;
+      margin-top: 28px;
+      padding: 22px;
+      background: rgba(0, 0, 0, 0.04);
+      border-radius: 18px;
       min-height: 80px;
-      font-size: 1.2em;
+      font-size: 1.18em;
       line-height: 1.7;
-      animation: fadeIn 0.5s;
+      text-align: left;
+      white-space: pre-line;
+      animation: fadeIn 0.5s ease;
+      border: 1px solid rgba(0, 0, 0, 0.06);
     }
+
     .theme-toggle {
       position: fixed;
       top: 20px;
       right: 20px;
       background: var(--card);
-      padding: 10px;
+      padding: 12px;
       border-radius: 50%;
       cursor: pointer;
-      font-size: 20px;
+      font-size: 22px;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: all 0.3s;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    [data-theme="dark"] input {
+      background: #2d2d2d;
+      color: #e0e0e0;
+      border-color: #444;
+    }
+
+    [data-theme="dark"] input::placeholder {
+      color: #888;
+    }
+
+    [data-theme="dark"] #answer {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.1);
     }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="theme-toggle" onclick="toggleTheme()">Moon</div>
+
   <div class="container">
     <div class="logo">Robot</div>
     <h1>Ask My AI</h1>
-    <p>Ask anything about the AI Prompt Engineer role!</p>
+    <p class="subtitle">Ask anything about the AI Prompt Engineer role!</p>
+    
     <input type="text" id="question" placeholder="What are the main tasks?" />
     <button onclick="askAI()">Ask!</button>
+    
     <div id="answer">Your answer will appear here...</div>
   </div>
 
   <script>
     const API_URL = "https://rag-api-116522765677.us-central1.run.app";
 
+    // Dark mode toggle
     function toggleTheme() {
       const body = document.body;
-      const current = body.getAttribute('data-theme');
-      body.setAttribute('data-theme', current === 'dark' ? '' : 'dark');
-      localStorage.setItem('theme', current === 'dark' ? 'light' : 'dark');
+      const isDark = body.getAttribute('data-theme') === 'dark';
+      body.setAttribute('data-theme', isDark ? '' : 'dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      document.querySelector('.theme-toggle').textContent = isDark ? 'Moon' : 'Sun';
     }
 
+    // Load saved theme
     if (localStorage.getItem('theme') === 'dark') {
       document.body.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle').textContent = 'Sun';
     }
 
+    // AI function
     async function askAI() {
       const question = document.getElementById("question").value.trim();
       const answerDiv = document.getElementById("answer");
-      if (!question) return;
+
+      if (!question) {
+        answerDiv.innerHTML = "Please enter a question!";
+        return;
+      }
 
       answerDiv.innerHTML = "Thinking...";
+
       try {
-        const res = await fetch(API_URL, {
+        const response = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ question })
         });
-        const data = await res.json();
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
         answerDiv.innerHTML = data.answer.replace(/\n/g, '<br>');
-      } catch (e) {
-        answerDiv.innerHTML = `Error: ${e.message}`;
+      } catch (error) {
+        answerDiv.innerHTML = `Error: ${error.message}<br>Check console (F12) for details.`;
+        console.error("API Error:", error);
       }
     }
+
+    // Enter key support
+    document.getElementById("question").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") askAI();
+    });
   </script>
 </body>
 </html>
