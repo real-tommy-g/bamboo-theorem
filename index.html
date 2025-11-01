@@ -6,7 +6,6 @@
   <title>Ask My AI</title>
   <style>
     :root {
-      /* LIGHT MODE – príjemná biela */
       --bg: #f8f9fa;
       --card: #ffffff;
       --text: #2c3e50;
@@ -14,14 +13,12 @@
       --shadow: rgba(0, 0, 0, 0.08);
     }
     [data-theme="dark"] {
-      /* DARK MODE – hlboká tmavá */
       --bg: #121212;
       --card: #1e1e1e;
       --text: #e0e0e0;
       --accent: #00d4ff;
       --shadow: rgba(0, 0, 0, 0.3);
     }
-
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--bg);
@@ -32,7 +29,6 @@
       min-height: 100vh;
       transition: all 0.4s ease;
     }
-
     .container {
       max-width: 600px;
       margin: 40px auto;
@@ -43,12 +39,7 @@
       animation: fadeIn 0.8s ease-out;
       backdrop-filter: blur(10px);
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     h1 {
       font-size: 2.8em;
       margin: 0 0 8px;
@@ -57,7 +48,6 @@
       -webkit-text-fill-color: transparent;
       font-weight: 600;
     }
-
     .logo {
       width: 80px;
       height: 80px;
@@ -72,18 +62,12 @@
       animation: pulse 2s infinite;
       box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
     }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-    }
-
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
     p.subtitle {
       font-size: 1.1em;
       margin: 0 0 25px;
       opacity: 0.85;
     }
-
     input {
       width: 68%;
       padding: 16px 20px;
@@ -96,17 +80,8 @@
       transition: all 0.3s;
       box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
     }
-
-    input:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-    }
-
-    input::placeholder {
-      color: #95a5a6;
-    }
-
+    input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); }
+    input::placeholder { color: #95a5a6; }
     button {
       padding: 16px 32px;
       margin: 12px 8px;
@@ -120,16 +95,8 @@
       transition: all 0.3s ease;
       box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
     }
-
-    button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
-    }
-
-    button:active {
-      transform: translateY(-1px);
-    }
-
+    button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4); }
+    button:active { transform: translateY(-1px); }
     #answer {
       margin-top: 28px;
       padding: 22px;
@@ -143,7 +110,6 @@
       animation: fadeIn 0.5s ease;
       border: 1px solid rgba(0, 0, 0, 0.06);
     }
-
     .theme-toggle {
       position: fixed;
       top: 20px;
@@ -157,39 +123,22 @@
       transition: all 0.3s;
       z-index: 1000;
     }
-
-    .theme-toggle:hover {
-      transform: scale(1.1);
-    }
-
-    [data-theme="dark"] input {
-      background: #2d2d2d;
-      color: #e0e0e0;
-      border-color: #444;
-    }
-
-    [data-theme="dark"] input::placeholder {
-      color: #888;
-    }
-
-    [data-theme="dark"] #answer {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: rgba(255, 255, 255, 0.1);
-    }
+    .theme-toggle:hover { transform: scale(1.1); }
+    [data-theme="dark"] input { background: #2d2d2d; color: #e0e0e0; border-color: #444; }
+    [data-theme="dark"] input::placeholder { color: #888; }
+    [data-theme="dark"] #answer { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.1); }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="theme-toggle" onclick="toggleTheme()">Moon</div>
+  <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
 
   <div class="container">
-    <div class="logo">Robot</div>
+    <div class="logo">🤖</div>
     <h1>Ask My AI</h1>
     <p class="subtitle">Ask anything about the AI Prompt Engineer role!</p>
-    
     <input type="text" id="question" placeholder="What are the main tasks?" />
     <button onclick="askAI()">Ask!</button>
-    
     <div id="answer">Your answer will appear here...</div>
   </div>
 
@@ -202,13 +151,13 @@
       const isDark = body.getAttribute('data-theme') === 'dark';
       body.setAttribute('data-theme', isDark ? '' : 'dark');
       localStorage.setItem('theme', isDark ? 'light' : 'dark');
-      document.querySelector('.theme-toggle').textContent = isDark ? 'Moon' : 'Sun';
+      document.querySelector('.theme-toggle').textContent = isDark ? '🌙' : '☀';
     }
 
     // Load saved theme
     if (localStorage.getItem('theme') === 'dark') {
       document.body.setAttribute('data-theme', 'dark');
-      document.querySelector('.theme-toggle').textContent = 'Sun';
+      document.querySelector('.theme-toggle').textContent = '☀';
     }
 
     // AI function
